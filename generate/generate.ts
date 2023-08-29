@@ -4,6 +4,7 @@ import { assoc, omit, pipe } from "rambda";
 import { getDPRCandidates } from "./sources/caleg-dpr";
 import { getDPRElectoralAreas } from "./sources/dapil-dpr";
 import { getPartyId, getPoliticalParties } from "./sources/parpol";
+import { getProvinces } from "./sources/propinsi";
 
 console.log("writing data/parpol.json...");
 
@@ -14,7 +15,16 @@ Bun.write(
   JSON.stringify(parties, null, 2)
 );
 
-console.log("writing data/dapil_dpr.json...");
+console.log("writing data/propinsi.json...");
+
+const provinces = await getProvinces();
+
+Bun.write(
+  path.resolve(import.meta.dir, "../data/propinsi.json"),
+  JSON.stringify(provinces, null, 2)
+);
+
+console.log("writing data/dapil-dpr.json...");
 
 const dprElectoralAreas = await getDPRElectoralAreas();
 
