@@ -1,0 +1,338 @@
+[
+  {
+    "kode": "1101",
+    "nama": "ACEH I"
+  },
+  {
+    "kode": "1102",
+    "nama": "ACEH II"
+  },
+  {
+    "kode": "1201",
+    "nama": "SUMATERA UTARA I"
+  },
+  {
+    "kode": "1202",
+    "nama": "SUMATERA UTARA II"
+  },
+  {
+    "kode": "1203",
+    "nama": "SUMATERA UTARA III"
+  },
+  {
+    "kode": "1301",
+    "nama": "SUMATERA BARAT I"
+  },
+  {
+    "kode": "1302",
+    "nama": "SUMATERA BARAT II"
+  },
+  {
+    "kode": "1401",
+    "nama": "RIAU I"
+  },
+  {
+    "kode": "1402",
+    "nama": "RIAU II"
+  },
+  {
+    "kode": "1501",
+    "nama": "JAMBI"
+  },
+  {
+    "kode": "1601",
+    "nama": "SUMATERA SELATAN I"
+  },
+  {
+    "kode": "1602",
+    "nama": "SUMATERA SELATAN II"
+  },
+  {
+    "kode": "1701",
+    "nama": "BENGKULU"
+  },
+  {
+    "kode": "1801",
+    "nama": "LAMPUNG I"
+  },
+  {
+    "kode": "1802",
+    "nama": "LAMPUNG II"
+  },
+  {
+    "kode": "1901",
+    "nama": "KEPULAUAN BANGKA BELITUNG"
+  },
+  {
+    "kode": "2101",
+    "nama": "KEPULAUAN RIAU"
+  },
+  {
+    "kode": "3101",
+    "nama": "DKI JAKARTA I"
+  },
+  {
+    "kode": "3102",
+    "nama": "DKI JAKARTA II"
+  },
+  {
+    "kode": "3103",
+    "nama": "DKI JAKARTA III"
+  },
+  {
+    "kode": "3201",
+    "nama": "JAWA BARAT I"
+  },
+  {
+    "kode": "3202",
+    "nama": "JAWA BARAT II"
+  },
+  {
+    "kode": "3203",
+    "nama": "JAWA BARAT III"
+  },
+  {
+    "kode": "3204",
+    "nama": "JAWA BARAT IV"
+  },
+  {
+    "kode": "3205",
+    "nama": "JAWA BARAT V"
+  },
+  {
+    "kode": "3206",
+    "nama": "JAWA BARAT VI"
+  },
+  {
+    "kode": "3207",
+    "nama": "JAWA BARAT VII"
+  },
+  {
+    "kode": "3208",
+    "nama": "JAWA BARAT VIII"
+  },
+  {
+    "kode": "3209",
+    "nama": "JAWA BARAT VIX"
+  },
+  {
+    "kode": "3210",
+    "nama": "JAWA BARAT X"
+  },
+  {
+    "kode": "3211",
+    "nama": "JAWA BARAT XI"
+  },
+  {
+    "kode": "3301",
+    "nama": "JAWA TENGAH I"
+  },
+  {
+    "kode": "3302",
+    "nama": "JAWA TENGAH II"
+  },
+  {
+    "kode": "3303",
+    "nama": "JAWA TENGAH III"
+  },
+  {
+    "kode": "3304",
+    "nama": "JAWA TENGAH IV"
+  },
+  {
+    "kode": "3305",
+    "nama": "JAWA TENGAH V"
+  },
+  {
+    "kode": "3306",
+    "nama": "JAWA TENGAH VI"
+  },
+  {
+    "kode": "3307",
+    "nama": "JAWA TENGAH VII"
+  },
+  {
+    "kode": "3308",
+    "nama": "JAWA TENGAH VIII"
+  },
+  {
+    "kode": "3309",
+    "nama": "JAWA TENGAH IX"
+  },
+  {
+    "kode": "3310",
+    "nama": "JAWA TENGAH X"
+  },
+  {
+    "kode": "3401",
+    "nama": "DAERAH ISTIMEWA YOGYAKARTA"
+  },
+  {
+    "kode": "3501",
+    "nama": "JAWA TIMUR I"
+  },
+  {
+    "kode": "3502",
+    "nama": "JAWA TIMUR II"
+  },
+  {
+    "kode": "3503",
+    "nama": "JAWA TIMUR III"
+  },
+  {
+    "kode": "3504",
+    "nama": "JAWA TIMUR IV"
+  },
+  {
+    "kode": "3505",
+    "nama": "JAWA TIMUR V"
+  },
+  {
+    "kode": "3506",
+    "nama": "JAWA TIMUR VI"
+  },
+  {
+    "kode": "3507",
+    "nama": "JAWA TIMUR VII"
+  },
+  {
+    "kode": "3508",
+    "nama": "JAWA TIMUR VIII"
+  },
+  {
+    "kode": "3509",
+    "nama": "JAWA TIMUR IX"
+  },
+  {
+    "kode": "3510",
+    "nama": "JAWA TIMUR X"
+  },
+  {
+    "kode": "3511",
+    "nama": "JAWA TIMUR XI"
+  },
+  {
+    "kode": "3601",
+    "nama": "BANTEN I"
+  },
+  {
+    "kode": "3602",
+    "nama": "BANTEN II"
+  },
+  {
+    "kode": "3603",
+    "nama": "BANTEN III"
+  },
+  {
+    "kode": "5101",
+    "nama": "BALI "
+  },
+  {
+    "kode": "5201",
+    "nama": "NUSA TENGGARA BARAT I"
+  },
+  {
+    "kode": "5202",
+    "nama": "NUSA TENGGARA BARAT II"
+  },
+  {
+    "kode": "5301",
+    "nama": "NUSA TENGGARA TIMUR I"
+  },
+  {
+    "kode": "5302",
+    "nama": "NUSA TENGGARA TIMUR II"
+  },
+  {
+    "kode": "6101",
+    "nama": "KALIMANTAN BARAT I"
+  },
+  {
+    "kode": "6102",
+    "nama": "KALIMANTAN BARAT II"
+  },
+  {
+    "kode": "6201",
+    "nama": "KALIMANTAN TENGAH"
+  },
+  {
+    "kode": "6301",
+    "nama": "KALIMANTAN SELATAN I"
+  },
+  {
+    "kode": "6302",
+    "nama": "KALIMANTAN SELATAN II"
+  },
+  {
+    "kode": "6401",
+    "nama": "KALIMANTAN TIMUR"
+  },
+  {
+    "kode": "6501",
+    "nama": "KALIMANTAN UTARA"
+  },
+  {
+    "kode": "7101",
+    "nama": "SULAWESI UTARA"
+  },
+  {
+    "kode": "7201",
+    "nama": "SULAWESI TENGAH"
+  },
+  {
+    "kode": "7301",
+    "nama": "SULAWESI SELATAN I"
+  },
+  {
+    "kode": "7302",
+    "nama": "SULAWESI SELATAN II"
+  },
+  {
+    "kode": "7303",
+    "nama": "SULAWESI SELATAN III"
+  },
+  {
+    "kode": "7401",
+    "nama": "SULAWESI TENGGARA"
+  },
+  {
+    "kode": "7501",
+    "nama": "GORONTALO"
+  },
+  {
+    "kode": "7601",
+    "nama": "SULAWESI BARAT"
+  },
+  {
+    "kode": "8101",
+    "nama": "MALUKU"
+  },
+  {
+    "kode": "8201",
+    "nama": "MALUKU UTARA"
+  },
+  {
+    "kode": "9101",
+    "nama": "PAPUA"
+  },
+  {
+    "kode": "9201",
+    "nama": "PAPUA BARAT"
+  },
+  {
+    "kode": "9301",
+    "nama": "PAPUA SELATAN"
+  },
+  {
+    "kode": "9401",
+    "nama": "PAPUA TENGAH"
+  },
+  {
+    "kode": "9501",
+    "nama": "PAPUA PEGUNUNGAN"
+  },
+  {
+    "kode": "9601",
+    "nama": "PAPUA BARAT DAYA"
+  }
+]

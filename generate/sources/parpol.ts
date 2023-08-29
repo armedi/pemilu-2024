@@ -1,4 +1,4 @@
-const baseURL = "https://infopemilu.kpu.go.id/Pemilu/Pemutakhiran_parpol";
+const baseURL = "https://infopemilu.kpu.go.id/Pemilu/Pemutakhiran_parpol/";
 
 const nomorUrutRewriter = new HTMLRewriter();
 nomorUrutRewriter.on("*", {
@@ -13,9 +13,6 @@ const nomorUrutToJson = (text: string) => {
 
 const fotoRewriter = new HTMLRewriter();
 fotoRewriter.on("*", {
-  text(text) {
-    console.log(text.text);
-  },
   element(element) {
     if (element.tagName === "img") {
       element.replace(element.getAttribute("src") || "");
@@ -30,23 +27,17 @@ const fotoToJson = (text: string) => {
 };
 
 const namaRewriter = new HTMLRewriter();
-namaRewriter
-  .on("*", {
-    element(element) {
-      if (element.tagName === "a") {
-        element.prepend((element.getAttribute("href") || "") + ";");
-        element.removeAndKeepContent();
-        element.onEndTag((a) => {});
-      } else {
-        element.remove();
-      }
-    },
-  })
-  .onDocument({
-    text(text) {
-      console.log(text.text);
-    },
-  });
+namaRewriter.on("*", {
+  element(element) {
+    if (element.tagName === "a") {
+      element.prepend((element.getAttribute("href") || "") + ";");
+      element.removeAndKeepContent();
+      element.onEndTag((a) => {});
+    } else {
+      element.remove();
+    }
+  },
+});
 
 const namaToJson = (text: string) => {
   const [detail_url, nama] = text.split(";");
@@ -83,19 +74,6 @@ export async function transform(data: string[][]): Promise<
   return result;
 }
 
-export function getPartyId(
-  parties: Array<{ id: number; nama: string }>,
-  name: string
-) {
-  const partyName =
-    {
-      "Partai Golongan Karya": "Partai GOLKAR",
-      "Partai Garda Republik Indonesia": "Partai Garda Perubahan Indonesia",
-      "PARTAI PERINDO": "PERINDO",
-    }[name] || name;
-  return parties.find((parpol) => parpol.nama === partyName)!.id;
-}
-
 // console.log(
 //   await transform([
 //     [
@@ -105,3 +83,25 @@ export function getPartyId(
 //     ],
 //   ])
 // );
+
+export async function getPoliticalParties() {
+  const url = new URL("get_parpol_diterima_nasional", baseURL);
+  console.log(url.toString());
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return transform(data);
+}
+
+export function getPartyId(
+  parties: Array<{ id: number; nama: string }>,
+  name: string
+) {
+  const partyName =
+    {
+      "Partai Golongan Karya": "Partai GOLKAR",
+      "PARTAI PERINDO": "PERINDO",
+    }[name] || name;
+  return parties.find(
+    (parpol) => parpol.nama.toLowerCase() === partyName.toLowerCase()
+  )!.id;
+}

@@ -64,7 +64,7 @@ const rewriters = [
   new HTMLRewriter(),
 ];
 
-export async function transform(data: string[][]): Promise<
+async function transform(data: string[][]): Promise<
   Array<{
     partai: string;
     dapil: string;
@@ -88,7 +88,14 @@ export async function transform(data: string[][]): Promise<
         ?.transform(new Response(row))
         .text()
         .then((parsed) => {
-          return j === 2 ? parseInt(parsed) : parsed;
+          switch (key) {
+            case "nomor_urut":
+              return parseInt(parsed);
+            case "jenis_kelamin":
+              return parsed === "PEREMPUAN" ? "P" : "L";
+            default:
+              return parsed;
+          }
         });
 
       if (value) {
@@ -114,3 +121,10 @@ export async function transform(data: string[][]): Promise<
 //     ],
 //   ])
 // );
+
+export async function getDPRCandidates(kode_dapil: string) {
+  const url = `https://infopemilu.kpu.go.id/Pemilu/Dcs_dpr/Dcs_dpr?kode_dapil=${kode_dapil}`;
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return transform(data);
+}
