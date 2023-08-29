@@ -11,17 +11,6 @@ partaiRewriter
     },
   });
 
-const dapilRewriter = new HTMLRewriter();
-dapilRewriter.on("*", {
-  element(element) {
-    if (element.tagName === "center") {
-      element.removeAndKeepContent();
-    } else {
-      element.remove();
-    }
-  },
-});
-
 const nomorUrutRewriter = new HTMLRewriter();
 nomorUrutRewriter.on("*", {
   element(element) {
@@ -46,7 +35,7 @@ fotoRewriter.on("*", {
 
 const fields = [
   "partai",
-  "dapil",
+  undefined,
   "nomor_urut",
   "foto",
   "nama",
@@ -56,7 +45,7 @@ const fields = [
 
 const rewriters = [
   partaiRewriter,
-  dapilRewriter,
+  undefined,
   nomorUrutRewriter,
   fotoRewriter,
   new HTMLRewriter(),
@@ -98,7 +87,7 @@ async function transform(data: string[][]): Promise<
           }
         });
 
-      if (value) {
+      if (key && value) {
         result[i][key] = value;
       }
     }
