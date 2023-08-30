@@ -38,7 +38,7 @@ const rewriters = [
   new HTMLRewriter(),
 ];
 
-async function transform(data: string[][]): Promise<
+export async function transform(data: string[][]): Promise<
   Array<{
     nomor_urut: number;
     foto: string;
@@ -81,20 +81,6 @@ async function transform(data: string[][]): Promise<
 
   return result;
 }
-
-// console.log(
-//   await transform([
-//     [
-//       '<center><i>Nama Provinsi</i><br><b><font size="3">ACEH</font></b></center>',
-//       '<center><i>Nomor urut</i><br><b><font size="3">1</font></b></center>',
-//       '<center><img src="../berkas-dpd/11/11_1_ABDUL HADI BANG JONI.png" width="75" ></center>',
-//       " ABDUL HADI BANG JONI",
-//       "<center>LAKI - LAKI</center>",
-//       "KOTA LHOKSEUMAWE/ACEH",
-//       "\r\n\t\t\t\t\t\t",
-//     ],
-//   ])
-// );
 
 export async function getDPDCandidates(kode_propinsi: string) {
   const url = `https://infopemilu.kpu.go.id/Pemilu/Dcs_dpd/Dcs_dpd?kode_pro=${kode_propinsi}`;

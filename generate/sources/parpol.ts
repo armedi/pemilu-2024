@@ -74,16 +74,6 @@ export async function transform(data: string[][]): Promise<
   return result;
 }
 
-// console.log(
-//   await transform([
-//     [
-//       '<span  style="font-size:22px;">1</span>',
-//       '<img src="../berkas-sipol/parpol/profil/gambar_parpol/1656538128_Logo PKB.png" width="50" height="20"></>',
-//       '<br><br><a href="Pemilu/../Detail_pemutakhiran_parpol/detail_parpol/8" targer="_blank" style="color:black" >Partai Kebangkitan Bangsa</a>',
-//     ],
-//   ])
-// );
-
 export async function getPoliticalParties() {
   const url = new URL("get_parpol_diterima_nasional", baseURL);
   console.log(url.toString());
