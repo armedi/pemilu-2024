@@ -76,7 +76,6 @@ export async function transform(data: string[][]): Promise<
 
 export async function getPoliticalParties() {
   const url = new URL("get_parpol_diterima_nasional", baseURL);
-  console.log(url.toString());
   const response = await fetch(url);
   const { data } = await response.json();
   return transform(data);

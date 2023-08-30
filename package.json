@@ -2,6 +2,9 @@
   "name": "pemilu",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "generate": "bun generate/generate.ts"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },

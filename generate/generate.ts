@@ -38,46 +38,46 @@ Bun.write(
   JSON.stringify(dpdCandidates, null, 2)
 );
 
-// console.log("writing data/parpol.json...");
+console.log("writing data/parpol.json...");
 
-// const parties = await getPoliticalParties();
+const parties = await getPoliticalParties();
 
-// Bun.write(
-//   path.resolve(import.meta.dir, "../data/parpol.json"),
-//   JSON.stringify(parties, null, 2)
-// );
+Bun.write(
+  path.resolve(import.meta.dir, "../data/parpol.json"),
+  JSON.stringify(parties, null, 2)
+);
 
-// console.log("writing data/dapil-dpr.json...");
+console.log("writing data/dapil-dpr.json...");
 
-// const dprElectoralAreas = await getDPRElectoralAreas();
+const dprElectoralAreas = await getDPRElectoralAreas();
 
-// Bun.write(
-//   path.resolve(import.meta.dir, "../data/dapil-dpr.json"),
-//   JSON.stringify(dprElectoralAreas, null, 2)
-// );
+Bun.write(
+  path.resolve(import.meta.dir, "../data/dapil-dpr.json"),
+  JSON.stringify(dprElectoralAreas, null, 2)
+);
 
-// console.log("writing data/caleg-dpr.json...");
+console.log("writing data/caleg-dpr.json...");
 
-// const dprCandidates: any[] = [];
+const dprCandidates: any[] = [];
 
-// for (let i = 0; i < dprElectoralAreas.length; i++) {
-//   const dapil = dprElectoralAreas[i];
-//   console.log(`    fetching DPR candidates from dapil ${dapil.nama}...`);
+for (let i = 0; i < dprElectoralAreas.length; i++) {
+  const dapil = dprElectoralAreas[i];
+  console.log(`    fetching DPR candidates from dapil ${dapil.nama}...`);
 
-//   await getDPRCandidates(dapil.kode).then((data) => {
-//     dprCandidates.push(
-//       ...data.map((candidate) => {
-//         return pipe(
-//           omit(["partai", "dapil"]),
-//           assoc("id_partai", getPartyId(parties, candidate.partai)),
-//           assoc("kode_dapil", dapil.kode),
-//         )(candidate);
-//       })
-//     );
-//   });
-// }
+  await getDPRCandidates(dapil.kode).then((data) => {
+    dprCandidates.push(
+      ...data.map((candidate) => {
+        return pipe(
+          omit(["partai", "dapil"]),
+          assoc("id_partai", getPartyId(parties, candidate.partai)),
+          assoc("kode_dapil", dapil.kode),
+        )(candidate);
+      })
+    );
+  });
+}
 
-// Bun.write(
-//   path.resolve(import.meta.dir, "../data/caleg-dpr.json"),
-//   JSON.stringify(dprCandidates, null, 2)
-// );
+Bun.write(
+  path.resolve(import.meta.dir, "../data/caleg-dpr.json"),
+  JSON.stringify(dprCandidates, null, 2)
+);
