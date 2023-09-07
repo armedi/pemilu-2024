@@ -1,4 +1,4 @@
-export async function getProvinces(): Promise<
+export async function getDPDElectoralAreas(): Promise<
   Array<{ kode: string; nama: string }>
 > {
   const url = "https://infopemilu.kpu.go.id/Pemilu/Dcs_dpd/GetDapilOptions";

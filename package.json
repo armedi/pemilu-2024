@@ -3,15 +3,16 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "generate": "bun generate/generate.ts"
+    "generate": "bun src/generate.ts"
   },
   "devDependencies": {
+    "@types/ramda": "^0.29.3",
     "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "rambda": "^8.3.0"
+    "ramda": "^0.29.0"
   }
 }
