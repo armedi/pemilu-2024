@@ -88,7 +88,6 @@ export function getPartyId(
   const partyName =
     {
       "Partai Golongan Karya": "Partai GOLKAR",
-      "PARTAI PERINDO": "PERINDO",
     }[name] || name;
   return parties.find(
     (parpol) => parpol.nama.toLowerCase() === partyName.toLowerCase()

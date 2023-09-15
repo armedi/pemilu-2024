@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { transform } from "./caleg-dpr";
+import { transform } from "./caleg-dpr-dprd";
 
 test("transform", async () => {
   const result = await transform([

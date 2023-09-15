@@ -56,7 +56,6 @@ const rewriters = [
 export async function transform(data: string[][]): Promise<
   Array<{
     partai: string;
-    dapil: string;
     nomor_urut: number;
     foto: string;
     nama: string;
@@ -96,9 +95,17 @@ export async function transform(data: string[][]): Promise<
   return result;
 }
 
-export async function getDPRCandidates(kode_dapil: string) {
-  const url = `https://infopemilu.kpu.go.id/Pemilu/Dcs_dpr/Dcs_dpr?kode_dapil=${kode_dapil}`;
+async function getCandidates(baseURL: string, kode_dapil: string) {
+  const url = `${baseURL}?kode_dapil=${kode_dapil}`;
   const response = await fetch(url);
   const { data } = await response.json();
   return transform(data);
+}
+
+export async function getDPRCandidates(kode_dapil: string) {
+  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dcs_dpr/Dcs_dpr', kode_dapil);
+}
+
+export async function getProvinceDPRDCandidates(kode_dapil: string) {
+  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dcs_dprprov/Dcs_dprprov', kode_dapil);
 }
