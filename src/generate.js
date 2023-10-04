@@ -15,14 +15,7 @@ import {
 } from "./sources/dapil";
 import { getPartyId, getPoliticalParties } from "./sources/parpol";
 
-console.log("writing generated/dapil-dpd.json...");
-
 const provinces = await getDPDElectoralAreas();
-
-await Bun.write(
-  path.resolve(import.meta.dir, "../generated/dapil-dpd.json"),
-  JSON.stringify(provinces, null, 2)
-);
 
 console.log("writing generated/caleg-dpd.json...");
 
@@ -55,14 +48,7 @@ await Bun.write(
   JSON.stringify(parties, null, 2)
 );
 
-console.log("writing generated/dapil-dpr.json...");
-
 const dprRIElectoralAreas = await getDprRIElectoralAreas();
-
-await Bun.write(
-  path.resolve(import.meta.dir, "../generated/dapil-dpr.json"),
-  JSON.stringify(dprRIElectoralAreas, null, 2)
-);
 
 console.log("writing generated/caleg-dpr.json...");
 
@@ -90,14 +76,7 @@ await Bun.write(
   JSON.stringify(dprCandidates, null, 2)
 );
 
-console.log("writing generated/dapil-dprd-prov.json...");
-
 const dprdProvElectoralAreas = await getDprdProvElectoralAreas();
-
-await Bun.write(
-  path.resolve(import.meta.dir, "../generated/dapil-dprd-prov.json"),
-  JSON.stringify(dprdProvElectoralAreas, null, 2)
-);
 
 console.log("writing generated/caleg-dprd-prov.json...");
 
@@ -125,14 +104,7 @@ await Bun.write(
   JSON.stringify(dprdProvCandidates, null, 2)
 );
 
-console.log("writing generated/dapil-dprd-kabko.json...");
-
 const dprdKabkoElectoralAreas = await getDprdKabkoElectoralAreas();
-
-await Bun.write(
-  path.resolve(import.meta.dir, "../generated/dapil-dprd-kabko.json"),
-  JSON.stringify(dprdKabkoElectoralAreas, null, 2)
-);
 
 console.log("writing generated/caleg-dprd-kabko.json...");
 
