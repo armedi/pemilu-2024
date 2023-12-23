@@ -13,7 +13,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "lowdb": "^6.0.1",
     "ramda": "^0.29.0"
   }
 }

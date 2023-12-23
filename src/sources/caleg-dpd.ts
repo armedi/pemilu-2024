@@ -84,7 +84,15 @@ export async function transform(data: string[][]): Promise<
 
 export async function getDPDCandidates(kode_propinsi: string) {
   const url = `https://infopemilu.kpu.go.id/Pemilu/Dcs_dpd/Dcs_dpd?kode_pro=${kode_propinsi}`;
-  const response = await fetch(url);
-  const { data } = await response.json();
-  return transform(data);
+
+  while (true) {
+    try {
+      const response = await fetch(url);
+      const { data } = await response.json();
+      return transform(data);
+    } catch (error) {
+      console.log(error)
+      console.log("retrying...")
+    }
+  }
 }

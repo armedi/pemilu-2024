@@ -97,9 +97,17 @@ export async function transform(data: string[][]): Promise<
 
 async function getCandidates(baseURL: string, kode_dapil: string) {
   const url = `${baseURL}?kode_dapil=${kode_dapil}`;
-  const response = await fetch(url);
-  const { data } = await response.json();
-  return transform(data);
+  
+  while (true) {
+    try {
+      const response = await fetch(url);
+      const { data } = await response.json();
+      return transform(data);
+    } catch (error) {
+      console.log(error)
+      console.log("retrying...")
+    }
+  }
 }
 
 export async function getDprRICandidates(kode_dapil: string) {
