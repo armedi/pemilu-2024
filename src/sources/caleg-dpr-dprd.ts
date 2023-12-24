@@ -33,6 +33,22 @@ fotoRewriter.on("*", {
   },
 });
 
+const candidateIdRewriter = new HTMLRewriter();
+candidateIdRewriter.on("*", {
+  element(element) {
+    if (element.tagName === "form") {
+      element.removeAndKeepContent();
+    } else if (
+      element.tagName === "input" &&
+      element.getAttribute("name") === "id_calon_dpr"
+    ) {
+      element.replace(element.getAttribute("value") || "");
+    } else {
+      element.remove();
+    }
+  },
+});
+
 const fields = [
   "partai",
   undefined,
@@ -41,6 +57,8 @@ const fields = [
   "nama",
   "jenis_kelamin",
   "alamat_kabko",
+  undefined,
+  "id_calon_dpr",
 ];
 
 const rewriters = [
@@ -51,6 +69,8 @@ const rewriters = [
   new HTMLRewriter(),
   new HTMLRewriter(),
   new HTMLRewriter(),
+  undefined,
+  candidateIdRewriter,
 ];
 
 export async function transform(data: string[][]): Promise<
@@ -61,6 +81,7 @@ export async function transform(data: string[][]): Promise<
     nama: string;
     jenis_kelamin: string;
     alamat_kabko: string;
+    id_calon_dpr: number;
   }>
 > {
   let result: any[] = [];
@@ -81,6 +102,8 @@ export async function transform(data: string[][]): Promise<
               return parseInt(parsed);
             case "jenis_kelamin":
               return parsed === "PEREMPUAN" ? "P" : "L";
+            case "id_calon_dpr":
+              return Number(parsed);
             default:
               return parsed;
           }
@@ -97,27 +120,36 @@ export async function transform(data: string[][]): Promise<
 
 async function getCandidates(baseURL: string, kode_dapil: string) {
   const url = `${baseURL}?kode_dapil=${kode_dapil}`;
-  
+
   while (true) {
     try {
       const response = await fetch(url);
       const { data } = await response.json();
       return transform(data);
     } catch (error) {
-      console.log(error)
-      console.log("retrying...")
+      console.log(error);
+      console.log("retrying...");
     }
   }
 }
 
 export async function getDprRICandidates(kode_dapil: string) {
-  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dct_dpr/Dct_dpr', kode_dapil);
+  return getCandidates(
+    "https://infopemilu.kpu.go.id/Pemilu/Dct_dpr/Dct_dpr",
+    kode_dapil
+  );
 }
 
 export async function getDprdProvCandidates(kode_dapil: string) {
-  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dct_dprprov/Dct_dprprov', kode_dapil);
+  return getCandidates(
+    "https://infopemilu.kpu.go.id/Pemilu/Dct_dprprov/Dct_dprprov",
+    kode_dapil
+  );
 }
 
 export async function getDprdKabkoCandidates(kode_dapil: string) {
-  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dct_dprd/Dct_dprdkabko', kode_dapil);
+  return getCandidates(
+    "https://infopemilu.kpu.go.id/Pemilu/Dct_dprd/Dct_dprdkabko",
+    kode_dapil
+  );
 }

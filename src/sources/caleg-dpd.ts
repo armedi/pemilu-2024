@@ -20,6 +20,22 @@ fotoRewriter.on("*", {
   },
 });
 
+const candidateIdRewriter = new HTMLRewriter();
+candidateIdRewriter.on("*", {
+  element(element) {
+    if (element.tagName === "form") {
+      element.removeAndKeepContent();
+    } else if (
+      element.tagName === "input" &&
+      element.getAttribute("name") === "ID_CANDIDATE"
+    ) {
+      element.replace(element.getAttribute("value") || "");
+    } else {
+      element.remove();
+    }
+  },
+});
+
 const fields = [
   undefined,
   undefined,
@@ -27,6 +43,7 @@ const fields = [
   "nama",
   "jenis_kelamin",
   "alamat_kabko",
+  "id_calon_dpd",
 ];
 
 const rewriters = [
@@ -36,6 +53,7 @@ const rewriters = [
   new HTMLRewriter(),
   genderRewriter,
   new HTMLRewriter(),
+  candidateIdRewriter,
 ];
 
 export async function transform(data: string[][]): Promise<
@@ -45,6 +63,7 @@ export async function transform(data: string[][]): Promise<
     nama: string;
     jenis_kelamin: string;
     alamat_kabko: string;
+    id_calon_dpd: number;
   }>
 > {
   let result: any[] = [];
@@ -68,6 +87,8 @@ export async function transform(data: string[][]): Promise<
               return parsed.trim();
             case "jenis_kelamin":
               return parsed.includes("PEREMPUAN") ? "P" : "L";
+            case "id_calon_dpd":
+              return Number(parsed);
             default:
               return parsed;
           }
@@ -91,8 +112,8 @@ export async function getDPDCandidates(kode_propinsi: string) {
       const { data } = await response.json();
       return transform(data);
     } catch (error) {
-      console.log(error)
-      console.log("retrying...")
+      console.log(error);
+      console.log("retrying...");
     }
   }
 }
