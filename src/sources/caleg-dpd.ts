@@ -1,4 +1,4 @@
-const baseURL = "https://infopemilu.kpu.go.id/Pemilu/Dcs_dpd";
+const baseURL = "https://infopemilu.kpu.go.id/Pemilu/Dct_dpd";
 
 const fotoRewriter = new HTMLRewriter();
 fotoRewriter.on("*", {
@@ -67,7 +67,7 @@ export async function transform(data: string[][]): Promise<
             case "nama":
               return parsed.trim();
             case "jenis_kelamin":
-              return parsed === "PEREMPUAN" ? "P" : "L";
+              return parsed.includes("PEREMPUAN") ? "P" : "L";
             default:
               return parsed;
           }
@@ -83,7 +83,7 @@ export async function transform(data: string[][]): Promise<
 }
 
 export async function getDPDCandidates(kode_propinsi: string) {
-  const url = `https://infopemilu.kpu.go.id/Pemilu/Dcs_dpd/Dcs_dpd?kode_pro=${kode_propinsi}`;
+  const url = `${baseURL}/Dct_dpd?kode_pro=${kode_propinsi}`;
 
   while (true) {
     try {

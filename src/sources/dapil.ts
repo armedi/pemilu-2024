@@ -1,7 +1,7 @@
 export async function getDPDElectoralAreas(): Promise<
   Array<{ kode: string; nama: string }>
 > {
-  const url = "https://infopemilu.kpu.go.id/Pemilu/Dcs_dpd/GetDapilOptions";
+  const url = "https://infopemilu.kpu.go.id/Pemilu/Dct_dpd/GetDapilOptions";
   const response = await fetch(url);
   const { data } = await response.json();
   return data.map((dapil) => ({
@@ -22,13 +22,13 @@ async function getDprElectoralAreas(url: string): Promise<
 }
 
 export async function getDprRIElectoralAreas() {
-  return getDprElectoralAreas("https://infopemilu.kpu.go.id/Pemilu/Dcs_dpr/GetDapilOptions_dprri");
+  return getDprElectoralAreas("https://infopemilu.kpu.go.id/Pemilu/Dct_dpr/GetDapilOptions_dprri");
 }
 
 export async function getDprdProvElectoralAreas() {
-  return getDprElectoralAreas("https://infopemilu.kpu.go.id/Pemilu/Dcs_dprprov/GetDapilOptions_dprprov");
+  return getDprElectoralAreas("https://infopemilu.kpu.go.id/Pemilu/Dct_dprprov/GetDapilOptions_dprprov");
 }
 
 export async function getDprdKabkoElectoralAreas() {
-  return getDprElectoralAreas("https://infopemilu.kpu.go.id/Pemilu/Dcs_dprd/GetDapilOptions_dprdkabko");
+  return getDprElectoralAreas("https://infopemilu.kpu.go.id/Pemilu/Dct_dprd/GetDapilOptions_dprdkabko");
 }

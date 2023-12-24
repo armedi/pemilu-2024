@@ -111,13 +111,13 @@ async function getCandidates(baseURL: string, kode_dapil: string) {
 }
 
 export async function getDprRICandidates(kode_dapil: string) {
-  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dcs_dpr/Dcs_dpr', kode_dapil);
+  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dct_dpr/Dct_dpr', kode_dapil);
 }
 
 export async function getDprdProvCandidates(kode_dapil: string) {
-  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dcs_dprprov/Dcs_dprprov', kode_dapil);
+  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dct_dprprov/Dct_dprprov', kode_dapil);
 }
 
 export async function getDprdKabkoCandidates(kode_dapil: string) {
-  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dcs_dprd/Dcs_dprdkabko', kode_dapil);
+  return getCandidates('https://infopemilu.kpu.go.id/Pemilu/Dct_dprd/Dct_dprdkabko', kode_dapil);
 }
