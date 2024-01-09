@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "generate": "bun src/generate.js"
+    "generate": "bun src/generate.js",
+    "to_csv": "./src/to_csv.sh"
   },
   "devDependencies": {
     "@types/ramda": "^0.29.3",

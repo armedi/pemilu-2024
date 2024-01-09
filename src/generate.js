@@ -106,28 +106,30 @@ await Bun.write(
 
 const dprdKabkoElectoralAreas = await getDprdKabkoElectoralAreas();
 
-console.log("writing generated/caleg-dprd-kabko.json...");
-
-const dprdKabkoCandidates = [];
+console.log("writing generated/caleg-dprd-kabko/*.json...");
 
 for (let i = 0; i < dprdKabkoElectoralAreas.length; i++) {
   const dapil = dprdKabkoElectoralAreas[i];
   console.log(`    fetching DPRD Kabko candidates from dapil ${dapil.nama}...`);
 
-  await getDprdKabkoCandidates(dapil.kode).then((data) => {
-    dprdKabkoCandidates.push(
-      ...data.map((candidate) =>
+  const dprdKabkoCandidate = await getDprdKabkoCandidates(dapil.kode).then(
+    (data) => {
+      return data.map((candidate) =>
         R.pipe(
           R.omit(["partai"]),
           R.assoc("id_partai", getPartyId(parties, candidate.partai)),
           R.assoc("kode_dapil", dapil.kode)
         )(candidate)
-      )
-    );
-  });
-}
+      );
+    }
+  );
 
-await Bun.write(
-  path.resolve(import.meta.dir, "../generated/caleg-dprd-kabko.json"),
-  JSON.stringify(dprdKabkoCandidates, null, 2)
-);
+  await Bun.write(
+    path.resolve(
+      import.meta.dir,
+      "../generated/caleg-dprd-kabko",
+      `${dapil.kode}.json`
+    ),
+    JSON.stringify(dprdKabkoCandidate, null, 2)
+  );
+}
