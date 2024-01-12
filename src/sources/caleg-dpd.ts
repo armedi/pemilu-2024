@@ -63,7 +63,7 @@ export async function transform(data: string[][]): Promise<
     nama: string;
     jenis_kelamin: string;
     alamat_kabko: string;
-    id_calon_dpd: number;
+    id_calon_dpd: string;
   }>
 > {
   let result: any[] = [];
@@ -88,7 +88,7 @@ export async function transform(data: string[][]): Promise<
             case "jenis_kelamin":
               return parsed.includes("PEREMPUAN") ? "P" : "L";
             case "id_calon_dpd":
-              return Number(parsed);
+              return parsed.trim();
             default:
               return parsed;
           }

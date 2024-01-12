@@ -81,7 +81,7 @@ export async function transform(data: string[][]): Promise<
     nama: string;
     jenis_kelamin: string;
     alamat_kabko: string;
-    id_calon_dpr: number;
+    id_calon_dpr: string;
   }>
 > {
   let result: any[] = [];
@@ -103,7 +103,7 @@ export async function transform(data: string[][]): Promise<
             case "jenis_kelamin":
               return parsed === "PEREMPUAN" ? "P" : "L";
             case "id_calon_dpr":
-              return Number(parsed);
+              return parsed.trim();
             default:
               return parsed;
           }
